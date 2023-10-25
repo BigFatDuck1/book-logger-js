@@ -1,0 +1,11 @@
+
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.book_cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
