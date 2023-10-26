@@ -17,6 +17,11 @@
 }
 
 /* Modal */
+dialog {
+    /* Positioning of modal */
+    margin-top: 50vh;
+    margin-left: 45vw;
+}
 
 dialog::backdrop {
     background-color: #8080804a;
