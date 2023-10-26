@@ -93,12 +93,13 @@ close_modal.addEventListener("click", () => {
 //Close modal if clicked outside (blank space)
 dialog.addEventListener("click", (event) => {
 
+  dialog = document.querySelector("dialog");
   dialog_dimensions = dialog.getBoundingClientRect();
 
-  if (event.clientX < dialog_dimensions.left || 
-      event.clientX > dialog_dimensions.right ||
-      event.clientY > dialog_dimensions.top ||
-      event.clientY < dialog_dimensions.bottom) {
+  if (event.clientX < dialog_dimensions.x || 
+      event.clientX > dialog_dimensions.x + dialog_dimensions.width ||
+      event.clientY > dialog_dimensions.y + dialog_dimensions.height ||
+      event.clientY < dialog_dimensions.y) {
         dialog.close();
       }
 })

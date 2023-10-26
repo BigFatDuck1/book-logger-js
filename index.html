@@ -24,8 +24,28 @@
 
 <dialog>
     <div class="modal">
-        <div>This is a modal</div>
-        <div><button class="close_book_button">Close modal</button></div>
+        <div class="modal_buttons"><button class="close_book_button">Close modal</button></div>
+        <form action="dialog">
+
+            <label for="title">Title: </label>
+            <input type="text" id="title" name="title">
+
+            <label for="author">Author: </label>
+            <input type="text" id="author" name="author">
+
+            <label for="pages">Pages: </label>
+            <input type="number" id="pages" name="pages" min="1" max="99999">
+
+            <input type="radio" id="unread" name="read_state">
+            <label for="unread">Unread</label>
+
+            <input type="radio" id="read" name="read_state">
+            <label for="read">Finished</label>
+
+            <input type="radio" id="want" name="read_state">
+            <label for="want">Wishlist</label>
+
+        </form>
     </div>
 </dialog>
 
