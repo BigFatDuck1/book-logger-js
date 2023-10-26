@@ -76,7 +76,8 @@ function iterateMyLibrary(array) {
 
 iterateMyLibrary(myLibrary);
 
-//3. Open modal
+//3. Modal
+let dialog = document.querySelector("dialog");
 let open_modal = document.querySelector(".new_book_button");
 
 open_modal.addEventListener("click", () => {
@@ -87,4 +88,17 @@ let close_modal = document.querySelector(".close_book_button");
 
 close_modal.addEventListener("click", () => {
   document.querySelector("dialog").close();
+})
+
+//Close modal if clicked outside (blank space)
+dialog.addEventListener("click", (event) => {
+
+  dialog_dimensions = dialog.getBoundingClientRect();
+
+  if (event.clientX < dialog_dimensions.left || 
+      event.clientX > dialog_dimensions.right ||
+      event.clientY > dialog_dimensions.top ||
+      event.clientY < dialog_dimensions.bottom) {
+        dialog.close();
+      }
 })
