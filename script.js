@@ -82,3 +82,9 @@ let open_modal = document.querySelector(".new_book_button");
 open_modal.addEventListener("click", () => {
   document.querySelector("dialog").showModal();
 })
+
+let close_modal = document.querySelector(".close_book_button");
+
+close_modal.addEventListener("click", () => {
+  document.querySelector("dialog").close();
+})

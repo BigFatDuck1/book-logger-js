@@ -15,3 +15,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
+
+/* Modal */
+dialog::backdrop {
+    background-color: #8080804a;
+}
