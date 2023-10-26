@@ -75,3 +75,10 @@ function iterateMyLibrary(array) {
 }
 
 iterateMyLibrary(myLibrary);
+
+//3. Open modal
+let open_modal = document.querySelector(".new_book_button");
+
+open_modal.addEventListener("click", () => {
+  document.querySelector("dialog").showModal();
+})
