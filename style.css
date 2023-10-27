@@ -19,8 +19,7 @@
 /* Modal */
 dialog {
     /* Positioning of modal */
-    margin-top: 50vh;
-    margin-left: 20vw;
+    margin: 40vh;
 }
 
 dialog::backdrop {
@@ -30,4 +29,5 @@ dialog::backdrop {
 .modal_buttons {
     display: flex;
     justify-content: flex-end;
+    width: 40ch;
 }
