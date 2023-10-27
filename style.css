@@ -26,8 +26,19 @@ dialog::backdrop {
     background-color: #8080804a;
 }
 
+.modal {
+    /* Container for entire modal window */
+    display: flex;
+    flex-direction: column;
+}
+
 .modal_buttons {
     display: flex;
     justify-content: flex-end;
-    width: 40ch;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
