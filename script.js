@@ -104,3 +104,19 @@ dialog.addEventListener("click", (event) => {
       }
 })
 
+//4. Form input
+let onSubmitForm = () => {
+  let submit_title = document.querySelector("#title").value;
+  let submit_author = document.querySelector("#author").value;
+  let submit_pages = document.querySelector("#pages").value;
+  //TODO: radio button for read state
+
+  console.log(`${submit_title}, ${submit_author}, ${submit_pages},`)
+
+  
+}
+
+document.querySelector(".submit_button").addEventListener("click", (event) => {
+  event.preventDefault();
+  onSubmitForm();
+})

@@ -25,7 +25,7 @@
 <dialog>
     <div class="modal">
         <div class="modal_buttons"><button class="close_book_button">Close modal</button></div>
-        <form action="dialog">
+        <form action="dialog" form="modal_form">
 
             <div class="title_input">
                 <label for="title">Title: </label>
@@ -53,7 +53,11 @@
                 <label for="want">Wishlist</label>
             </div>
 
-            <div class="submit_section"><button>Submit</button></div>
+            <div class="submit_section">
+                <button id="submit_button" class="submit_button" type="submit" form="modal_form">
+                    Submit
+                </button>
+            </div>
 
         </form>
     </div>

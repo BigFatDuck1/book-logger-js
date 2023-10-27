@@ -22,6 +22,7 @@ dialog {
     /* Positioning of modal */
     margin-top: 30vh;
     margin-left: calc(50vw - 15vw);
+    border: none;
 }
 
 dialog::backdrop {
