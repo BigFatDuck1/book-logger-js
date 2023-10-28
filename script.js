@@ -138,6 +138,10 @@ let onSubmitForm = () => {
     return "Incomplete form";
     
   }
+  if (document.querySelector("#reading").checked == true && document.querySelector("#bookmark").value == "") {
+    //TODO: give signal that user hasn't filled in what page they are at (bookmark)
+    return "Incomplete bookmark";
+  }
   //TODO: radio button for read state
   let submit_state;
   if (document.querySelector("#unread").checked == true) {
