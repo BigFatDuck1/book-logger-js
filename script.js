@@ -130,16 +130,16 @@ let onSubmitForm = () => {
   let submit_pages = document.querySelector("#pages").value;
   //TODO: radio button for read state
   let submit_state;
-  if (document.querySelector("#unread").checked = true) {
+  if (document.querySelector("#unread").checked == true) {
     submit_state = "unread";
   }
-  else if (document.querySelector("#reading").checked = true) {
+  else if (document.querySelector("#reading").checked == true) {
     submit_state = "reading";
   }
-  else if (document.querySelector("#read").checked = true) {
+  else if (document.querySelector("#read").checked == true) {
     submit_state = "finished";
   }
-  else if (document.querySelector("#want").checked = true) {
+  else if (document.querySelector("#want").checked == true) {
     submit_state = "wishlist";
   }
 
