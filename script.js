@@ -127,13 +127,25 @@ let onSubmitForm = () => {
   addNewBookFromArray(myLibrary);
 
   //5. Clear form
+  document.querySelector("#title").value = "";
+  document.querySelector("#author").value = "";
+  document.querySelector("#pages").value = "";
+
 
   //console.log(`${submit_title}, ${submit_author}, ${submit_pages},`)
 
   
 }
 
+//Submit button
 document.querySelector(".submit_button").addEventListener("click", (event) => {
   event.preventDefault();
   onSubmitForm();
+})
+//Enter button
+document.querySelector("dialog").addEventListener("keydown", (event) => {
+  if (event.key == "Enter") {
+    event.preventDefault();
+    onSubmitForm();
+  }
 })

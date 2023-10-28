@@ -51,3 +51,8 @@ form {
     display: flex;
     justify-content: center;
 }
+
+/* Card */
+.card {
+    padding: 10px;
+}
