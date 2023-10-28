@@ -83,10 +83,17 @@ function addNewBookFromArray(array) {
 
 //3. Modal
 let dialog = document.querySelector("dialog");
-let open_modal = document.querySelector(".new_book_button");
+let open_modal_button = document.querySelector(".new_book_button");
 
-open_modal.addEventListener("click", () => {
+open_modal_button.addEventListener("click", () => {
   document.querySelector("dialog").showModal();
+})
+document.addEventListener("keydown", (event) => {
+  if (event.key == "a") {
+    dialog.showModal();
+    
+  }
+
 })
 
 let close_modal = document.querySelector(".close_book_button");
