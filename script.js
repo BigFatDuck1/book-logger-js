@@ -90,7 +90,10 @@ open_modal_button.addEventListener("click", () => {
 })
 document.addEventListener("keydown", (event) => {
   if (event.key == "a") {
-    dialog.showModal();
+    if (document.querySelector("dialog").open == false) {
+      dialog.showModal();
+      event.preventDefault();
+    }
     
   }
 
