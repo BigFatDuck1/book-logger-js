@@ -48,8 +48,7 @@ let addCardFromArray = (book_info) => {
     let info = document.createElement("div");
     //Put the info into the div
     info.classList.add("info");
-    // TODO: Change this line to style the card (e.g. labels and info have different styles)
-    //TODO: can wrap info with a span
+    
     if (item == "pages") {
       info.textContent = `${book_info[item]} pages`;
     }
@@ -74,7 +73,13 @@ function iterateMyLibrary(array) {
   }
 }
 
+//Call this for initial setup for displaying all saved books
 iterateMyLibrary(myLibrary);
+
+//Adds book from array[-1] (most recently added book)
+function addNewBookFromArray(array) {
+  addCardFromArray(array[array.length - 1]);
+}
 
 //3. Modal
 let dialog = document.querySelector("dialog");
@@ -106,12 +111,24 @@ dialog.addEventListener("click", (event) => {
 
 //4. Form input
 let onSubmitForm = () => {
+  //1. Collect data
   let submit_title = document.querySelector("#title").value;
   let submit_author = document.querySelector("#author").value;
   let submit_pages = document.querySelector("#pages").value;
   //TODO: radio button for read state
 
-  console.log(`${submit_title}, ${submit_author}, ${submit_pages},`)
+  //2. Create new object from data
+  let new_book = new Book(submit_title, submit_author, submit_pages);
+
+  //3. Append new data into myLibrary[]
+  myLibrary.push(new_book);
+
+  //4. Update book_cards with new book from myLibrary[]
+  addNewBookFromArray(myLibrary);
+
+  //5. Clear form
+
+  //console.log(`${submit_title}, ${submit_author}, ${submit_pages},`)
 
   
 }
