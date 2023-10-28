@@ -44,12 +44,16 @@
 
             <div class="state_input">
                 <div class="unread_box">
-                    <input type="radio" id="unread" name="read_state">
+                    <input type="radio" id="unread" name="read_state" checked>
                     <label for="unread">Unread</label>
                 </div>
                 <div class="reading_box">
                     <input type="radio" id="reading" name="read_state">
                     <label for="reading">Reading</label>
+                    <div class="bookmark">
+                        <label for="bookmark">At page: </label>
+                        <input type="tel" id="bookmark" name="bookmark">
+                    </div>
                 </div>
                 <div class="finished_box">
                     <input type="radio" id="read" name="read_state">

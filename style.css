@@ -1,9 +1,9 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700&display=swap');
 
 * {
     margin: 0px;
     padding: 0px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Gabarito", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .main_container {
@@ -50,6 +50,10 @@ form {
 .state_input {
     display: flex;
     flex-direction: column;
+}
+
+.bookmark {
+    display: none;
 }
 
 .submit_section {

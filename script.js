@@ -14,6 +14,8 @@ function Book(title, author, pages, read) {
   this.read = read
 }
 
+let bookmark; //If state of book is "reading", bookmark holds the page they are currently at
+
 //Appends book information to array
 function addBookToLibrary(title, author, pages, read) {
 
@@ -124,10 +126,18 @@ dialog.addEventListener("click", (event) => {
 
 //4. Form input
 let onSubmitForm = () => {
+  
   //1. Collect data
   let submit_title = document.querySelector("#title").value;
   let submit_author = document.querySelector("#author").value;
   let submit_pages = document.querySelector("#pages").value;
+  //Check if any field is empty first - if yes, don't allow submit
+  if (submit_title == "" || submit_author == "" || submit_pages == "") {
+    /* //TODO: give signal to user that he hasn't finished filling in the form 
+    e.g. turn input boxes red */
+    return "Incomplete form";
+    
+  }
   //TODO: radio button for read state
   let submit_state;
   if (document.querySelector("#unread").checked == true) {
@@ -145,6 +155,11 @@ let onSubmitForm = () => {
 
   //2. Create new object from data
   let new_book = new Book(submit_title, submit_author, submit_pages, submit_state);
+  //2. If reading, add bookmark
+  if (new_book.bookmark != undefined) {
+    //If key exists
+    new_book.bookmark = bookmark;
+  }
 
   //3. Append new data into myLibrary[]
   myLibrary.push(new_book);
@@ -157,11 +172,22 @@ let onSubmitForm = () => {
   document.querySelector("#author").value = "";
   document.querySelector("#pages").value = "";
 
+  //6. Close modal
+  document.querySelector("dialog").close();
 
-  //console.log(`${submit_title}, ${submit_author}, ${submit_pages},`)
-
-  
+  return 0;
 }
+
+//Expand accordion if state is "reading"
+document.querySelector("dialog").addEventListener("click", () => {
+  let bookmark_section = document.querySelector(".bookmark");
+  if (document.querySelector("#reading").checked == true) {
+    bookmark_section.style.display = "block";
+  }
+  else {
+    bookmark_section.style.display = "none";
+  }
+})
 
 //Submit button
 document.querySelector(".submit_button").addEventListener("click", (event) => {
