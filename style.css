@@ -47,6 +47,11 @@ form {
     gap: 10px;
 }
 
+.state_input {
+    display: flex;
+    flex-direction: column;
+}
+
 .submit_section {
     display: flex;
     justify-content: center;
