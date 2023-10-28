@@ -5,6 +5,12 @@
 //All books are stored in this array
 const myLibrary = [];
 
+//Just an array that has all intergers in string 
+let number_array = ["0"];
+for (let i = 1; i < 10; i++) {
+  number_array.push(i.toString());
+}
+
 //Constructor function
 function Book(title, author, pages, read) {
   this.title = title,
@@ -14,7 +20,6 @@ function Book(title, author, pages, read) {
   this.read = read
 }
 
-let bookmark; //If state of book is "reading", bookmark holds the page they are currently at
 
 //Appends book information to array
 function addBookToLibrary(title, author, pages, read) {
@@ -28,7 +33,7 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 //! Keep this for debug purposes
-console.log(addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", 100,"read"))
+console.log(addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Completed"))
 
 //2. Turning information into card and adding it to page
 
@@ -56,7 +61,10 @@ let addCardFromArray = (book_info) => {
     }
     else if (item == "read") {
       //TODO: Change icon of card depending on read state (unread, completed, wishlist)
-      info.textContent = `State: ${book_info[item]}`;
+      info.textContent = `${book_info[item]}`;
+    }
+    else if (item == "bookmark") {
+      info.textContent = `Currently at page ${book_info[item]}`
     }
     else {
       info.textContent = `${book_info[item]}`;
@@ -131,38 +139,49 @@ let onSubmitForm = () => {
   let submit_title = document.querySelector("#title").value;
   let submit_author = document.querySelector("#author").value;
   let submit_pages = document.querySelector("#pages").value;
-  //Check if any field is empty first - if yes, don't allow submit
+  
+  //Error handling (input validation)
   if (submit_title == "" || submit_author == "" || submit_pages == "") {
     /* //TODO: give signal to user that he hasn't finished filling in the form 
     e.g. turn input boxes red */
     return "Incomplete form";
-    
   }
   if (document.querySelector("#reading").checked == true && document.querySelector("#bookmark").value == "") {
     //TODO: give signal that user hasn't filled in what page they are at (bookmark)
     return "Incomplete bookmark";
   }
-  //TODO: radio button for read state
+  if (document.querySelector("#reading").checked == true) {
+    if (parseInt(document.querySelector("#bookmark").value) == NaN) {
+      //TODO: tell user they have entered an invalid bookmark page number ("reading state")
+      console.log("blocked")
+      return "Invalid page number (NaN) in bookmark";
+    }
+  }
+  if (parseInt(document.querySelector("#pages").value) == NaN) {
+    //User didn't input a number for pages
+    //TODO: tell user they entered an invalid page number
+    return "Invalid page number (NaN)";
+  }
+
   let submit_state;
   if (document.querySelector("#unread").checked == true) {
-    submit_state = "unread";
+    submit_state = "Unread";
   }
   else if (document.querySelector("#reading").checked == true) {
-    submit_state = "reading";
+    submit_state = "Reading";
   }
   else if (document.querySelector("#read").checked == true) {
-    submit_state = "finished";
+    submit_state = "Finished";
   }
   else if (document.querySelector("#want").checked == true) {
-    submit_state = "wishlist";
+    submit_state = "Wishlist";
   }
 
   //2. Create new object from data
   let new_book = new Book(submit_title, submit_author, submit_pages, submit_state);
   //2. If reading, add bookmark
-  if (new_book.bookmark != undefined) {
-    //If key exists
-    new_book.bookmark = bookmark;
+  if (document.querySelector("#bookmark").value != "") {
+    new_book.bookmark = document.querySelector("#bookmark").value;
   }
 
   //3. Append new data into myLibrary[]
