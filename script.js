@@ -10,7 +10,7 @@ function Book(title, author, pages, read) {
   this.title = title,
   this.author = author,
   this.pages = pages,
-  //Want, Reading, Completed
+  //Unread, Reading, Completed, Wishlist
   this.read = read
 }
 
@@ -85,13 +85,16 @@ function addNewBookFromArray(array) {
 let dialog = document.querySelector("dialog");
 let open_modal_button = document.querySelector(".new_book_button");
 
+//Button opens modal
 open_modal_button.addEventListener("click", () => {
   document.querySelector("dialog").showModal();
 })
+//Pressing a also opens modal
 document.addEventListener("keydown", (event) => {
   if (event.key == "a") {
     if (document.querySelector("dialog").open == false) {
       dialog.showModal();
+      //To prevent "a" from appearing in input field after pressing a to open new window
       event.preventDefault();
     }
     
@@ -126,9 +129,22 @@ let onSubmitForm = () => {
   let submit_author = document.querySelector("#author").value;
   let submit_pages = document.querySelector("#pages").value;
   //TODO: radio button for read state
+  let submit_state;
+  if (document.querySelector("#unread").checked = true) {
+    submit_state = "unread";
+  }
+  else if (document.querySelector("#reading").checked = true) {
+    submit_state = "reading";
+  }
+  else if (document.querySelector("#read").checked = true) {
+    submit_state = "finished";
+  }
+  else if (document.querySelector("#want").checked = true) {
+    submit_state = "wishlist";
+  }
 
   //2. Create new object from data
-  let new_book = new Book(submit_title, submit_author, submit_pages);
+  let new_book = new Book(submit_title, submit_author, submit_pages, submit_state);
 
   //3. Append new data into myLibrary[]
   myLibrary.push(new_book);
