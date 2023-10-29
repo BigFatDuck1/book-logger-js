@@ -34,6 +34,9 @@ function addBookToLibrary(title, author, pages, read) {
 
 //! Keep this for debug purposes
 console.log(addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Completed"))
+console.log(addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Completed"))
+console.log(addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Completed"))
+console.log(addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Completed"))
 
 //2. Turning information into card and adding it to page
 
