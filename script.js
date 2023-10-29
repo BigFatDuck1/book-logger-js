@@ -20,6 +20,12 @@ function Book(title, author, pages, read) {
   this.read = read
 }
 
+//Global variable to store index of newest added book
+//So it can be incorporated into data-attribute later
+let latest_index = myLibrary.length - 1;
+if (myLibrary.length == 0) {
+  latest_index = 0;
+}
 
 //Appends book information to array
 function addBookToLibrary(title, author, pages, read) {
@@ -46,6 +52,8 @@ let book_cards_container = document.querySelector(".book_cards");
 let addCardFromArray = (book_info) => {
   //Create div
   let new_card = document.createElement("div");
+  //Add data attribute
+  new_card.dataset.index = latest_index;
   //Append class
   new_card.classList.add("card");
   //Add title, author, pages, read as a child div
@@ -188,6 +196,8 @@ let onSubmitForm = () => {
 
   //3. Append new data into myLibrary[]
   myLibrary.push(new_book);
+  //7. Stores the index of most recently added book into a global variable so it can be incorporated into a data attribute later
+  latest_index = myLibrary.length - 1;
 
   //4. Update book_cards with new book from myLibrary[]
   addNewBookFromArray(myLibrary);
