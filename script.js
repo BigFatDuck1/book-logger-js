@@ -83,11 +83,17 @@ let addCardFromArray = (book_info) => {
     //Append the info as a div
     new_card.appendChild(info)
   }
+  //Add Delete button 
+  let delete_button = document.createElement("button");
+  delete_button.textContent = "Delete";
+  delete_button.classList.add("delete_button");
+  new_card.appendChild(delete_button);
   //Append div to container
   book_cards_container.appendChild(new_card);
 }
 
 //Iterates over each item in myLibrary[]
+//Call this in the beginning when the app starts
 function iterateMyLibrary(array) {
   for (let i = 0; i < array.length; i++) {
     addCardFromArray(array[i]);
