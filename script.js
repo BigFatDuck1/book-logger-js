@@ -150,14 +150,13 @@ let onSubmitForm = () => {
     //TODO: give signal that user hasn't filled in what page they are at (bookmark)
     return "Incomplete bookmark";
   }
-  if (document.querySelector("#reading").checked == true) {
-    if (parseInt(document.querySelector("#bookmark").value) == NaN) {
-      //TODO: tell user they have entered an invalid bookmark page number ("reading state")
-      console.log("blocked")
-      return "Invalid page number (NaN) in bookmark";
-    }
+  let bookmark_value = document.querySelector("#bookmark").value;
+  if (document.querySelector("#reading").checked == true && Number.isNaN(parseInt(bookmark_value)) == true) {
+    //TODO: tell user they have entered an invalid bookmark page number ("reading state")
+    console.log("blocked")
+    return "Invalid page number (NaN) in bookmark";
   }
-  if (parseInt(document.querySelector("#pages").value) == NaN) {
+  if (Number.isNaN(parseInt(submit_pages)) == true) {
     //User didn't input a number for pages
     //TODO: tell user they entered an invalid page number
     return "Invalid page number (NaN)";
