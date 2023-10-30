@@ -40,6 +40,17 @@ h1 {
     font-size: 2.5rem;
 }
 
+    /* Rearranging logo */
+.logo {
+    display: flex;
+    align-items: center;
+}
+div.logo_image {
+    background-color: transparent;
+    font-size: 2rem;
+    padding-bottom: 10px;
+}
+
 .button_container {
     padding-right: 30px;
     background-color: var(--header);
@@ -71,6 +82,7 @@ button.new_book_button:active,
 }
 
 .book_cards {
+    /* Container for the cards */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
