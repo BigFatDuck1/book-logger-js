@@ -63,7 +63,6 @@ let addCardFromArray = (book_info) => {
       info.textContent = `${book_info[item]} pages`;
     }
     else if (item == "read") {
-      //TODO: Change icon of card depending on read state (unread, completed, wishlist)
       info.textContent = `${book_info[item]}`;
     }
     else if (item == "bookmark") {
@@ -244,6 +243,8 @@ let onSubmitForm = () => {
   //6. Close modal
   document.querySelector("dialog").close();
 
+  //Attach event listener to the state button
+  attachStateButton();
   //Attach event listener to the delete button
   attachDeleteButton();  
 
