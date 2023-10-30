@@ -329,3 +329,17 @@ function attachStateButton() {
   })
 }
 attachStateButton();
+
+//7. Highlight selected radio in modal
+document.querySelector(".state_input").addEventListener("click", function() {
+  let modal_radios = document.querySelectorAll("input[type='radio']");
+
+  modal_radios.forEach((element) => {
+    if (element.checked == true) {
+      element.parentElement.children[1].classList.add("select_state");
+    }
+    else {
+      element.parentElement.children[1].classList.remove("select_state");
+    }
+  })
+})

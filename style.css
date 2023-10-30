@@ -11,7 +11,7 @@
 :root {
     --bg: #ffffff;
     --primary-text: #000000;
-    --header: #b5b5b5;
+    --header: #e3e0e0;
     --secondary: #06e6bc;
     --secondary-hover: #04c09d;
     --button-text: #000000;
@@ -55,14 +55,17 @@ button {
     border-radius: 3px;
     cursor: pointer;
 }
-button.new_book_button {
+button.new_book_button, 
+#submit_button {
     background-color: var(--secondary);
 
 }
-button.new_book_button:hover {
+button.new_book_button:hover,
+#submit_button:hover {
     background-color: var(--secondary-hover);
 }
-button.new_book_button:active {
+button.new_book_button:active,
+#submit_button:active {
     background-color: var(--secondary-hover);
     box-shadow: 0 5px 2px -2px #00000061;
 }
@@ -75,7 +78,7 @@ button.new_book_button:active {
 /* Modal */
 dialog {
     /* Positioning of modal */
-    margin-top: 30vh;
+    margin-top: 20vh;
     margin-left: calc(50vw - 15vw);
     border: none;
     border-radius: 20px;
@@ -99,6 +102,10 @@ dialog::backdrop {
     justify-content: flex-end;
 }
 
+.close_book_button {
+    padding: 1px;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -109,19 +116,20 @@ label[for="title"],
 label[for="author"], 
 label[for="pages"] {
     display: block;
+    font-weight: 500;
 }
 
 #title, 
 #author,
 #pages {
     /* Input fields stretch the entire modal */
-    width: 100%;
+    width: 90%;
 }
 
 input {
     outline: none;
     border: none;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #9c9c9c;
     text-indent: 2px;
     transition: border-bottom 0.2s;
 }
@@ -129,18 +137,54 @@ input:focus {
     border-bottom: 2px solid var(--secondary);
 }
 
+.pages_input {
+    margin-bottom: 10px;
+}
+
 .state_input {
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+/* .state_input {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 15px;
+    place-content: end;
+} */
+
+input[type="radio"] {
+    appearance: none;
+    width: 0;
+    border: none;
+}
+input[type="radio"]+label {
+    border: 1px solid #9c9c9c;
+    padding: 5px;
+    font-weight: 500;
+}
+
+.select_state {
+    background-color: var(--secondary);
 }
 
 .bookmark {
     display: none;
+    padding: 5px;
+}
+.bookmark > label {
+    font-style: italic;
+}
+.bookmark input {
+    width: 8ch;
 }
 
 .submit_section {
     display: flex;
     justify-content: center;
+    padding-top: 10px;
 }
 
 /* Card */
