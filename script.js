@@ -32,10 +32,10 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 //! Keep this for debug and testing purposes
-console.log(addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Completed"))
-console.log(addBookToLibrary("For Whom The Bells Toll 2", "Ernest Hemingway", "100", "Completed"))
-console.log(addBookToLibrary("For Whom The Bells Toll 3", "Ernest Hemingway", "100", "Completed"))
-console.log(addBookToLibrary("For Whom The Bells Toll 4", "Ernest Hemingway", "100", "Completed"))
+console.log(addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Finished"))
+console.log(addBookToLibrary("For Whom The Bells Toll 2", "Ernest Hemingway", "100", "Finished"))
+console.log(addBookToLibrary("For Whom The Bells Toll 3", "Ernest Hemingway", "100", "Finished"))
+console.log(addBookToLibrary("For Whom The Bells Toll 4", "Ernest Hemingway", "100", "Unread"))
 
 
 //2. Turning information into card and adding it to page
@@ -115,6 +115,13 @@ function addStateButtons(state) {
   reading_button.innerHTML = "<img src='assets/black_feather/book-open.svg' class='icon'>"
   read_button.innerHTML = "<img src='assets/black_feather/check-square.svg' class='icon'>"
   want_button.innerHTML = "<img src='assets/black_feather/star.svg' class='icon'>"
+
+  //Highlight state (I could have moved this up there but I am doing this for clarity) 
+  state_buttons.forEach((element) => {
+    if (state == element.dataset.state) {
+      element.classList.add("highlight_state");
+    }
+  })
 
   return state_buttons;
   
