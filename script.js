@@ -258,7 +258,9 @@ function deleteButtonActivate() {
       let last_deleted_element = myLibrary.splice(current_delete_index, 1);
       //2. Delete element from DOM
       document.querySelector(`.card[data-index='${current_delete_index}']`).remove();
-      console.log(current_delete_index)
+      //3. Update latest index variable since array is shrinked by one
+      latest_index = myLibrary.length - 1;
+
 
       return last_deleted_element;
     })  
