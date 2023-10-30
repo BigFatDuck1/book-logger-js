@@ -40,9 +40,6 @@ function addBookToLibrary(title, author, pages, read) {
 
 //! Keep this for debug purposes
 console.log(addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Completed"))
-console.log(addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Completed"))
-console.log(addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Completed"))
-console.log(addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Completed"))
 
 //2. Turning information into card and adding it to page
 
@@ -87,6 +84,8 @@ let addCardFromArray = (book_info) => {
   let delete_button = document.createElement("button");
   delete_button.textContent = "Delete";
   delete_button.classList.add("delete_button");
+  //Assign index to delete button
+  delete_button.dataset.index = latest_index;
   new_card.appendChild(delete_button);
   //Append div to container
   book_cards_container.appendChild(new_card);
@@ -195,7 +194,7 @@ let onSubmitForm = () => {
 
   //2. Create new object from data
   let new_book = new Book(submit_title, submit_author, submit_pages, submit_state);
-  //2. If reading, add bookmark
+  //2.1 If reading, add bookmark
   if (document.querySelector("#bookmark").value != "") {
     new_book.bookmark = document.querySelector("#bookmark").value;
   }
@@ -215,6 +214,9 @@ let onSubmitForm = () => {
 
   //6. Close modal
   document.querySelector("dialog").close();
+
+  // Attach addEventListener to delete button
+  deleteButtonActivate();
 
   return 0;
 }
@@ -242,3 +244,27 @@ document.querySelector("dialog").addEventListener("keydown", (event) => {
     onSubmitForm();
   }
 })
+
+//5. Delete button for each card
+function deleteButtonActivate() {
+  let all_delete_buttons = document.querySelectorAll(".delete_button")
+
+  all_delete_buttons.forEach((element) => {
+    element.addEventListener("click", function() {
+      //Which delete button is pressed?
+      let current_delete_index = this.dataset.index;
+      //1. Remove elements from myLibrary[]
+        //Store deleted element for undo purposes
+      let last_deleted_element = myLibrary.splice(current_delete_index, 1);
+      //2. Delete element from DOM
+      document.querySelector(`.card[data-index='${current_delete_index}']`).remove();
+      console.log(current_delete_index)
+
+      return last_deleted_element;
+    })  
+  });
+
+  return all_delete_buttons;
+}
+  //On startup, attach event listeners to all present delete buttons
+let all_delete_buttons = deleteButtonActivate();
