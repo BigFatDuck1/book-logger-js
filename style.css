@@ -109,6 +109,13 @@ label[for="pages"] {
     display: block;
 }
 
+#title, 
+#author,
+#pages {
+    /* Input fields stretch the entire modal */
+    width: 100%;
+}
+
 input {
     outline: none;
     border: none;
