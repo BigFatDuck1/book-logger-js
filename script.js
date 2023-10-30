@@ -20,13 +20,6 @@ function Book(title, author, pages, read) {
   this.read = read
 }
 
-//Global variable to store index of newest added book
-//So it can be incorporated into data-attribute later
-let latest_index = myLibrary.length - 1;
-if (myLibrary.length == 0) {
-  latest_index = 0;
-}
-
 //Appends book information to array
 function addBookToLibrary(title, author, pages, read) {
 
@@ -40,6 +33,10 @@ function addBookToLibrary(title, author, pages, read) {
 
 //! Keep this for debug purposes
 console.log(addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Completed"))
+console.log(addBookToLibrary("For Whom The Bells Toll 2", "Ernest Hemingway", "100", "Completed"))
+console.log(addBookToLibrary("For Whom The Bells Toll 3", "Ernest Hemingway", "100", "Completed"))
+console.log(addBookToLibrary("For Whom The Bells Toll 4", "Ernest Hemingway", "100", "Completed"))
+
 
 //2. Turning information into card and adding it to page
 
@@ -49,8 +46,6 @@ let book_cards_container = document.querySelector(".book_cards");
 let addCardFromArray = (book_info) => {
   //Create div
   let new_card = document.createElement("div");
-  //Add data attribute
-  new_card.dataset.index = latest_index;
   //Append class
   new_card.classList.add("card");
   //Add title, author, pages, read as a child div
@@ -84,8 +79,6 @@ let addCardFromArray = (book_info) => {
   let delete_button = document.createElement("button");
   delete_button.textContent = "Delete";
   delete_button.classList.add("delete_button");
-  //Assign index to delete button
-  delete_button.dataset.index = latest_index;
   new_card.appendChild(delete_button);
   //Append div to container
   book_cards_container.appendChild(new_card);
@@ -201,8 +194,6 @@ let onSubmitForm = () => {
 
   //3. Append new data into myLibrary[]
   myLibrary.push(new_book);
-  //7. Stores the index of most recently added book into a global variable so it can be incorporated into a data attribute later
-  latest_index = myLibrary.length - 1;
 
   //4. Update book_cards with new book from myLibrary[]
   addNewBookFromArray(myLibrary);
@@ -215,8 +206,8 @@ let onSubmitForm = () => {
   //6. Close modal
   document.querySelector("dialog").close();
 
-  // Attach addEventListener to delete button
-  deleteButtonActivate();
+  //Attach event listener to the delete button
+  attachDeleteButton();  
 
   return 0;
 }
@@ -246,27 +237,23 @@ document.querySelector("dialog").addEventListener("keydown", (event) => {
 })
 
 //5. Delete button for each card
-function deleteButtonActivate() {
+function attachDeleteButton() {
   let all_delete_buttons = document.querySelectorAll(".delete_button")
 
   all_delete_buttons.forEach((element) => {
+    //Attach event listener to each delete button
     element.addEventListener("click", function() {
-      //Which delete button is pressed?
-      let current_delete_index = this.dataset.index;
-      //1. Remove elements from myLibrary[]
-        //Store deleted element for undo purposes
-      let last_deleted_element = myLibrary.splice(current_delete_index, 1);
-      //2. Delete element from DOM
-      document.querySelector(`.card[data-index='${current_delete_index}']`).remove();
-      //3. Update latest index variable since array is shrinked by one
-      latest_index = myLibrary.length - 1;
-
-
-      return last_deleted_element;
+      //Get parent of the delete button and store the title of the book
+      let parent = this.parentElement;
+      let parent_title = this.parentElement.firstChild.textContent;
+      //Store the index of the relevant entry 
+      let parent_index = myLibrary.findIndex(element => element.title == parent_title)
+      //1. Remove element from myLibrary[] array
+      myLibrary.splice(parent_index, 1);
+      //2. Remove the element itself
+      parent.remove();
     })  
   });
-
-  return all_delete_buttons;
 }
   //On startup, attach event listeners to all present delete buttons
-let all_delete_buttons = deleteButtonActivate();
+attachDeleteButton();
