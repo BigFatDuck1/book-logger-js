@@ -84,7 +84,8 @@ let addCardFromArray = (book_info) => {
   //Add Delete button 
   let delete_button = document.createElement("button");
     //Change this to a trashcan icon
-  delete_button.textContent = "Delete";
+  //delete_button.textContent = "Delete";
+  delete_button.innerHTML = "<img src='assets/black_feather/trash-2.svg' class='icon'>"
   delete_button.classList.add("delete_button");
   new_card.appendChild(delete_button);
   //Append div to container
@@ -102,7 +103,13 @@ function addStateButtons(state) {
   //Add class into button
   state_buttons.forEach((element) => {
     element.classList.add("state_buttons");
-  }) 
+  })
+  //Add data attribute that shows the function/state of the button
+  unread_button.dataset.state = "Unread";
+  reading_button.dataset.state = "Reading";
+  read_button.dataset.state = "Finished";
+  want_button.dataset.state = "Wishlist";
+
 
   //Change icon of button
   unread_button.innerHTML = "<img src='assets/black_feather/book.svg' class='icon'>"
@@ -288,3 +295,25 @@ function attachDeleteButton() {
 }
   //On startup, attach event listeners to all present delete buttons
 attachDeleteButton();
+
+//6. Add event listeners to state button
+function attachStateButton() {
+  let state_button_array = document.querySelectorAll(".state_buttons");
+  state_button_array.forEach((button) => {
+    button.addEventListener("click", function() {
+      //Get title of the book this button comes from
+      let parent = this.parentElement;
+      let parent_title = this.parentElement.firstChild.textContent;
+      // Determine what state the button is (unread, reading, read, wishlist)
+      let button_state = this.dataset.state;
+      //1. Change state of element in myLibrary[]
+      let current_index = myLibrary.findIndex(element => element.title == parent_title);
+      myLibrary[current_index].read = button_state;
+      //2. Update description
+        //TODO: highlight icon
+      parent.children[3].textContent = button_state;
+
+    })
+  })
+}
+attachStateButton();
