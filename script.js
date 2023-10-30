@@ -33,6 +33,10 @@ function addBookToLibrary(title, author, pages, read) {
 
 //! Keep this for debug purposes
 console.log(addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Completed"))
+console.log(addBookToLibrary("For Whom The Bells Toll 2", "Ernest Hemingway", "100", "Completed"))
+console.log(addBookToLibrary("For Whom The Bells Toll 3", "Ernest Hemingway", "100", "Completed"))
+console.log(addBookToLibrary("For Whom The Bells Toll 4", "Ernest Hemingway", "100", "Completed"))
+
 
 //2. Turning information into card and adding it to page
 
@@ -190,8 +194,6 @@ let onSubmitForm = () => {
 
   //3. Append new data into myLibrary[]
   myLibrary.push(new_book);
-  //7. Stores the index of most recently added book into a global variable so it can be incorporated into a data attribute later
-  latest_index = myLibrary.length - 1;
 
   //4. Update book_cards with new book from myLibrary[]
   addNewBookFromArray(myLibrary);
@@ -204,7 +206,8 @@ let onSubmitForm = () => {
   //6. Close modal
   document.querySelector("dialog").close();
 
-  //! Attach event listener to delete button here
+  //Attach event listener to the delete button
+  attachDeleteButton();  
 
   return 0;
 }
@@ -234,15 +237,23 @@ document.querySelector("dialog").addEventListener("keydown", (event) => {
 })
 
 //5. Delete button for each card
-function deleteButtonActivate() {
+function attachDeleteButton() {
   let all_delete_buttons = document.querySelectorAll(".delete_button")
 
   all_delete_buttons.forEach((element) => {
+    //Attach event listener to each delete button
     element.addEventListener("click", function() {
-      console.log(this.parentElement);
-      console.log(this.parentElement.firstChild.textContent);
+      //Get parent of the delete button and store the title of the book
+      let parent = this.parentElement;
+      let parent_title = this.parentElement.firstChild.textContent;
+      //Store the index of the relevant entry 
+      let parent_index = myLibrary.findIndex(element => element.title == parent_title)
+      //1. Remove element from myLibrary[] array
+      myLibrary.splice(parent_index, 1);
+      //2. Remove the element itself
+      parent.remove();
     })  
   });
 }
   //On startup, attach event listeners to all present delete buttons
-deleteButtonActivate();
+attachDeleteButton();
