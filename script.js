@@ -20,13 +20,6 @@ function Book(title, author, pages, read) {
   this.read = read
 }
 
-//Global variable to store index of newest added book
-//So it can be incorporated into data-attribute later
-let latest_index = myLibrary.length - 1;
-if (myLibrary.length == 0) {
-  latest_index = 0;
-}
-
 //Appends book information to array
 function addBookToLibrary(title, author, pages, read) {
 
@@ -49,8 +42,6 @@ let book_cards_container = document.querySelector(".book_cards");
 let addCardFromArray = (book_info) => {
   //Create div
   let new_card = document.createElement("div");
-  //Add data attribute
-  new_card.dataset.index = latest_index;
   //Append class
   new_card.classList.add("card");
   //Add title, author, pages, read as a child div
@@ -84,8 +75,6 @@ let addCardFromArray = (book_info) => {
   let delete_button = document.createElement("button");
   delete_button.textContent = "Delete";
   delete_button.classList.add("delete_button");
-  //Assign index to delete button
-  delete_button.dataset.index = latest_index;
   new_card.appendChild(delete_button);
   //Append div to container
   book_cards_container.appendChild(new_card);
@@ -215,8 +204,7 @@ let onSubmitForm = () => {
   //6. Close modal
   document.querySelector("dialog").close();
 
-  // Attach addEventListener to delete button
-  deleteButtonActivate();
+  //! Attach event listener to delete button here
 
   return 0;
 }
@@ -251,22 +239,10 @@ function deleteButtonActivate() {
 
   all_delete_buttons.forEach((element) => {
     element.addEventListener("click", function() {
-      //Which delete button is pressed?
-      let current_delete_index = this.dataset.index;
-      //1. Remove elements from myLibrary[]
-        //Store deleted element for undo purposes
-      let last_deleted_element = myLibrary.splice(current_delete_index, 1);
-      //2. Delete element from DOM
-      document.querySelector(`.card[data-index='${current_delete_index}']`).remove();
-      //3. Update latest index variable since array is shrinked by one
-      latest_index = myLibrary.length - 1;
-
-
-      return last_deleted_element;
+      console.log(this.parentElement);
+      console.log(this.parentElement.firstChild.textContent);
     })  
   });
-
-  return all_delete_buttons;
 }
   //On startup, attach event listeners to all present delete buttons
-let all_delete_buttons = deleteButtonActivate();
+deleteButtonActivate();
