@@ -86,3 +86,7 @@ form {
 .state_buttons:active {
     background-color: darkgray;
 }
+
+.highlight_state {
+    background-color: #20b2abac;
+}

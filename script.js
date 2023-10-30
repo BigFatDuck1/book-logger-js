@@ -311,8 +311,12 @@ function attachStateButton() {
       let current_index = myLibrary.findIndex(element => element.title == parent_title);
       myLibrary[current_index].read = button_state;
       //2. Update description
-        //TODO: highlight icon
       parent.children[3].textContent = button_state;
+        //Highlights the state of the book
+      for (const child of parent.children) {
+        child.classList.remove("highlight_state");
+      };
+      this.classList.add("highlight_state");
 
     })
   })
