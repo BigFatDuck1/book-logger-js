@@ -32,10 +32,10 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 //! Keep this for debug and testing purposes
-console.log(addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Finished"))
-console.log(addBookToLibrary("For Whom The Bells Toll 2", "Ernest Hemingway", "100", "Finished"))
-console.log(addBookToLibrary("For Whom The Bells Toll 3", "Ernest Hemingway", "100", "Finished"))
-console.log(addBookToLibrary("For Whom The Bells Toll 4", "Ernest Hemingway", "100", "Unread"))
+addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Finished")
+addBookToLibrary("For Whom The Bells Toll 2", "Ernest Hemingway", "100", "Finished")
+addBookToLibrary("For Whom The Bells Toll 3", "Ernest Hemingway", "100", "Finished")
+addBookToLibrary("For Whom The Bells Toll 4", "Ernest Hemingway", "100", "Unread")
 
 
 //2. Turning information into card and adding it to page
