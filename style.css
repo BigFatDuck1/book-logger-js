@@ -78,6 +78,8 @@ dialog {
     margin-top: 30vh;
     margin-left: calc(50vw - 15vw);
     border: none;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px var(--secondary);
 }
 
 dialog::backdrop {
