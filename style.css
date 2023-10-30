@@ -197,12 +197,16 @@ input[type="radio"]+label {
     border: 1px solid grey;
 }
 .state_buttons:hover {
-    background-color: black;
+    background-color: var(--secondary-hover);
 }
 .state_buttons:active {
-    background-color: darkgray;
+    background-color: var(--header);
 }
 
 .highlight_state {
-    background-color: #20b2abac;
+    background-color: var(--secondary);
+}
+
+img {
+    background-color: transparent;
 }
