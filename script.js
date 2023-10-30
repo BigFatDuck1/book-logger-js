@@ -31,7 +31,7 @@ function addBookToLibrary(title, author, pages, read) {
   
 }
 
-//! Keep this for debug purposes
+//! Keep this for debug and testing purposes
 console.log(addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Completed"))
 console.log(addBookToLibrary("For Whom The Bells Toll 2", "Ernest Hemingway", "100", "Completed"))
 console.log(addBookToLibrary("For Whom The Bells Toll 3", "Ernest Hemingway", "100", "Completed"))
@@ -75,13 +75,43 @@ let addCardFromArray = (book_info) => {
     //Append the info as a div
     new_card.appendChild(info)
   }
+  //Add state buttons
+  let state_buttons_divs = addStateButtons(book_info["read"]); //Array of state buttons
+  state_buttons_divs.forEach((button) => {
+    new_card.appendChild(button)
+  })
+
   //Add Delete button 
   let delete_button = document.createElement("button");
+    //Change this to a trashcan icon
   delete_button.textContent = "Delete";
   delete_button.classList.add("delete_button");
   new_card.appendChild(delete_button);
   //Append div to container
   book_cards_container.appendChild(new_card);
+}
+
+//Returns an array of all state buttons
+function addStateButtons(state) {
+  //State buttons: unread, reading, read (completed), want (wishlist)
+  let unread_button = document.createElement("button");
+  let reading_button = document.createElement("button");
+  let read_button = document.createElement("button");
+  let want_button = document.createElement("button");
+  let state_buttons = [unread_button, reading_button, read_button, want_button];
+  //Add class into button
+  state_buttons.forEach((element) => {
+    element.classList.add("state_buttons");
+  }) 
+
+  //Change icon of button
+  unread_button.innerHTML = "<img src='assets/black_feather/book.svg' class='icon'>"
+  reading_button.innerHTML = "<img src='assets/black_feather/book-open.svg' class='icon'>"
+  read_button.innerHTML = "<img src='assets/black_feather/check-square.svg' class='icon'>"
+  want_button.innerHTML = "<img src='assets/black_feather/star.svg' class='icon'>"
+
+  return state_buttons;
+  
 }
 
 //Iterates over each item in myLibrary[]
@@ -97,6 +127,7 @@ iterateMyLibrary(myLibrary);
 
 //Adds book from array[-1] (most recently added book)
 function addNewBookFromArray(array) {
+  //myLibrary[-1] is passed as parameter
   addCardFromArray(array[array.length - 1]);
 }
 

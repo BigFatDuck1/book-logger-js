@@ -75,3 +75,14 @@ form {
 .card {
     padding: 10px;
 }
+
+.state_buttons {
+    background-color: transparent;
+    border: 1px solid grey;
+}
+.state_buttons:hover {
+    background-color: black;
+}
+.state_buttons:active {
+    background-color: darkgray;
+}
