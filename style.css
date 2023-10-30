@@ -9,13 +9,14 @@
 }
 
 :root {
-    --bg: #ffffff;
+    --bg: #FFFFFF;
+    --card-bg: white;
     --primary-text: #000000;
     --header: #e3e0e0;
     --secondary: #06e6bc;
     --secondary-hover: #04c09d;
     --button-text: #000000;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .main_container {
@@ -79,12 +80,6 @@ button.new_book_button:active,
 #submit_button:active {
     background-color: var(--secondary-hover);
     box-shadow: 0 5px 2px -2px #00000061;
-}
-
-.book_cards {
-    /* Container for the cards */
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
 /* Modal */
@@ -200,8 +195,43 @@ input[type="radio"]+label {
 }
 
 /* Card */
+.book_cards {
+    /* Container for the cards */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
 .card {
-    padding: 10px;
+    padding: 20px;
+    margin: 10px;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px var(--secondary);
+
+}
+
+.info {
+    background-color: transparent;
+    padding: 3px;
+}
+
+.title_div {
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: 600;
+    padding: 5px;
+}
+
+.author_div {
+    font-style: italic;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.bookmark_div {
+    font-size: 0.9rem;
+    font-style: italic;
 }
 
 .state_buttons {

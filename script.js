@@ -66,7 +66,16 @@ let addCardFromArray = (book_info) => {
       info.textContent = `${book_info[item]}`;
     }
     else if (item == "bookmark") {
+      info.classList.add("bookmark_div")
       info.textContent = `Currently at page ${book_info[item]}`
+    }
+    else if (item == "title") {
+      info.textContent = `${book_info[item]}`
+      info.classList.add("title_div");
+    }
+    else if (item == "author") {
+      info.textContent = `${book_info[item]}`;
+      info.classList.add("author_div")
     }
     else {
       info.textContent = `${book_info[item]}`;
