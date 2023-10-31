@@ -9,8 +9,8 @@
 }
 
 :root {
-    --bg: #FFFFFF;
-    --card-bg: white;
+    --bg: #fefefe;
+    --card-bg: #faebd733;
     --primary-text: #000000;
     --header: #1d1d1d;
     --card-shadow: #e3e0e0;
@@ -301,6 +301,9 @@ img {
 
 /* Delete button */
 .icon {
+    background-color: transparent;
+}
+.delete_button {
     background-color: transparent;
 }
 .delete_button:hover {
