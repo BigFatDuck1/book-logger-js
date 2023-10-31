@@ -207,7 +207,7 @@ input[type="radio"]+label {
     margin: 10px;
     background-color: var(--card-bg);
     border-radius: 10px;
-    box-shadow: 5px 5px 10px var(--secondary);
+    box-shadow: 5px 5px 10px var(--header);
 
 }
 
