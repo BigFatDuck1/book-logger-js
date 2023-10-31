@@ -32,11 +32,12 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 //! Keep this for debug and testing purposes
-addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Finished")
-addBookToLibrary("For Whom The Bells Toll 2", "Ernest Hemingway", "100", "Finished")
-addBookToLibrary("For Whom The Bells Toll 3", "Ernest Hemingway", "100", "Finished")
-addBookToLibrary("For Whom The Bells Toll 4", "Ernest Hemingway", "100", "Unread")
-
+addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Finished");
+addBookToLibrary("For Whom The Bells Toll 2", "Ernest Hemingway", "100", "Finished");
+addBookToLibrary("For Whom The Bells Toll 3", "Ernest Hemingway", "100", "Finished");
+addBookToLibrary("For Whom The Bells Toll 4", "Ernest Hemingway", "100", "Unread");
+addBookToLibrary("Very very very very very very very very very very very long title", "Author", "200", "Reading");
+myLibrary[4].bookmark = "50";
 
 //2. Turning information into card and adding it to page
 
@@ -60,13 +61,15 @@ let addCardFromArray = (book_info) => {
     info.classList.add("info");
     
     if (item == "pages") {
+      info.classList.add("pages_div");
       info.textContent = `${book_info[item]} pages`;
     }
     else if (item == "read") {
+      info.classList.add("state_div");
       info.textContent = `${book_info[item]}`;
     }
     else if (item == "bookmark") {
-      info.classList.add("bookmark_div")
+      info.classList.add("bookmark_div");
       info.textContent = `Currently at page ${book_info[item]}`
     }
     else if (item == "title") {

@@ -216,7 +216,7 @@ input[type="radio"]+label {
 .book_cards {
     /* Container for the cards */
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
 }
 
@@ -254,7 +254,7 @@ input[type="radio"]+label {
 
 .state_buttons {
     background-color: transparent;
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
 }
 .state_buttons:hover {
     background-color: var(--secondary-hover);
@@ -273,9 +273,17 @@ img {
 
 /* Add new book card  */
 .new_book_card {
+    /* From .card */
+    padding: 20px;
+    margin: 10px;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px var(--card-shadow);
+    /* New properties*/
     display: grid;
     place-content: center;
     cursor: pointer;
+    min-height: 220px;
     /* grid-column-start: -2;
     grid-column-end: -1;
     grid-row-start: -2;
@@ -291,7 +299,66 @@ img {
     filter: invert(40%);
 }
 
+/* Delete button */
+.icon {
+    background-color: transparent;
+}
+.delete_button:hover {
+    background-color: rgb(219, 56, 56);
+}
+.delete_button:active {
+    background-color: #ff0000a3;
+    opacity: 50%;
+}
+
 /* Grid styling */
 .card {
     padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    display: grid;
+    grid-template-areas: 
+    "one one one one one one"
+    "two two two two two two"
+    "three three three three three three"
+    "four four four four four four"
+    "five five five five five five"
+    "six seven eight nine . ten";
+}
+.title_div {
+    grid-area: one;
+}
+.author_div {
+    grid-area: two;
+}
+.pages_div {
+    padding-left: 20px;
+    grid-area: three;
+}
+.state_div {
+    padding-left: 20px;
+    grid-area: four;
+}
+.bookmark_div {
+    padding-left: 20px;
+    padding-bottom: 10px;
+    grid-area: five;
+}
+button.state_buttons[data-state="Unread"] {
+    grid-area: six;
+}
+button.state_buttons[data-state="Reading"] {
+    grid-area: seven;
+}
+button.state_buttons[data-state="Finished"] {
+    grid-area: eight;
+}
+button.state_buttons[data-state="Wishlist"] {
+    grid-area: nine;
+}
+.delete_button {
+    grid-area: ten;
+}
+.plus_icon {
+    grid-area: one two three four five six seven eight nine ten;
 }
