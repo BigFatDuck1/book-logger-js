@@ -208,6 +208,7 @@ input[type="radio"]+label {
     background-color: var(--card-bg);
     border-radius: 10px;
     box-shadow: 5px 5px 10px var(--header);
+    /* grid properties: see below */
 
 }
 
@@ -268,4 +269,53 @@ img {
     width: 100px;
     height: auto;
     filter: opacity(50%);
+}
+
+/* Grid properties of card: rearranging the buttons */
+.card {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: repeat(6, 1fr);
+}
+
+.title_div {
+    grid-column-start: 2;
+    grid-column-end: -1;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.author_div {
+    grid-column-start: 2;
+    grid-column-end: -1;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.pages_div {
+    grid-column-start: 2;
+    grid-column-end: -1;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.state_div {
+    grid-column-start: 2;
+    grid-column-end: -1;
+    grid-row-start: 4;
+    grid-row-end: 5;
+}
+
+.bookmark_div {
+    grid-column-start: 2;
+    grid-column-end: -1;
+    grid-row-start: 5;
+    grid-row-end: 6;
+}
+
+.buttons_div {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: -1;
 }
