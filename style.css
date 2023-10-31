@@ -252,3 +252,20 @@ input[type="radio"]+label {
 img {
     background-color: transparent;
 }
+
+/* Add new book card  */
+.new_book_card {
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    /* grid-column-start: -2;
+    grid-column-end: -1;
+    grid-row-start: -2;
+    grid-row-end: -1; */
+    order: 1000000; /* To make sure it's always at the end */
+}
+.plus_icon {
+    width: 100px;
+    height: auto;
+    filter: opacity(50%);
+}

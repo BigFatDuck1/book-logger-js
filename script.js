@@ -352,3 +352,8 @@ document.querySelector(".state_input").addEventListener("click", function() {
     }
   })
 })
+
+//8. New book card
+document.querySelector(".new_book_card").addEventListener("click", () => {
+  document.querySelector("dialog").showModal();
+})
