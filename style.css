@@ -10,7 +10,7 @@
 
 :root {
     --bg: #fefefe;
-    --card-bg: #faebd733;
+    --card-bg: #fff8ef;
     --primary-text: #000000;
     --header: #1d1d1d;
     --card-shadow: #e3e0e0;
@@ -32,6 +32,7 @@
     justify-content: space-between;
     padding-top: 5px;
     background-color: var(--header);
+    padding-bottom: 50px;
 }
 
 .logo, h1 {
@@ -226,7 +227,6 @@ input[type="radio"]+label {
     background-color: var(--card-bg);
     border-radius: 10px;
     box-shadow: 5px 5px 10px var(--card-shadow);
-
 }
 
 .info {
@@ -364,4 +364,10 @@ button.state_buttons[data-state="Wishlist"] {
 }
 .plus_icon {
     grid-area: one two three four five six seven eight nine ten;
+}
+
+/* Cool upward translation effect */
+.card, .new_book_card {
+    position: relative;
+    top: -30px;
 }
