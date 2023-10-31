@@ -33,9 +33,9 @@ function addBookToLibrary(title, author, pages, read) {
 
 //! Keep this for debug and testing purposes
 addBookToLibrary("For Whom The Bells Toll", "Ernest Hemingway", "100", "Finished");
-addBookToLibrary("For Whom The Bells Toll 2", "Ernest Hemingway", "100", "Finished");
-addBookToLibrary("For Whom The Bells Toll 3", "Ernest Hemingway", "100", "Finished");
-addBookToLibrary("For Whom The Bells Toll 4", "Ernest Hemingway", "100", "Unread");
+addBookToLibrary("Old Man and the Sea", "Ernest Hemingway", "100", "Finished");
+addBookToLibrary("The Grapes of Wrath", "John Steinbeck", "100", "Wishlist");
+addBookToLibrary("Brave New World", "Aldous Huxley", "100", "Unread");
 addBookToLibrary("Very very very very very very very very very very very long title", "Author", "200", "Reading");
 myLibrary[4].bookmark = "50";
 
