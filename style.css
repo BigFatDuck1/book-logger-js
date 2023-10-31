@@ -12,10 +12,12 @@
     --bg: #FFFFFF;
     --card-bg: white;
     --primary-text: #000000;
-    --header: #e3e0e0;
+    --header: #1d1d1d;
+    --card-shadow: #e3e0e0;
     --secondary: #06e6bc;
     --secondary-hover: #04c09d;
     --button-text: #000000;
+    --logo-text: white;
     font-size: 16px;
 }
 
@@ -33,28 +35,31 @@
 }
 
 .logo, h1 {
-    background-color: var(--header);
+    background-color: transparent;
     padding-bottom: 5px;
 }
 
 h1 {
     font-size: 2.5rem;
+    color: var(--logo-text);
 }
 
     /* Rearranging logo */
 .logo {
     display: flex;
     align-items: center;
+    filter: drop-shadow(2px 2px 1px var(--secondary));
 }
 div.logo_image {
     background-color: transparent;
     font-size: 2rem;
     padding-bottom: 10px;
+    filter: invert(5%);
 }
 
 .button_container {
     padding-right: 30px;
-    background-color: var(--header);
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -67,12 +72,22 @@ button {
     border-radius: 3px;
     cursor: pointer;
 }
-button.new_book_button, 
+button.new_book_button {
+    background-color: transparent;
+    color: var(--logo-text);
+    border: none;
+    border-bottom: 3px solid var(--logo-text);
+} 
+
 #submit_button {
     background-color: var(--secondary);
 
 }
-button.new_book_button:hover,
+button.new_book_button:hover {
+    color: var(--secondary);
+    border-bottom: 1px solid var(--secondary);
+}
+
 #submit_button:hover {
     background-color: var(--secondary-hover);
 }
@@ -111,6 +126,9 @@ dialog::backdrop {
 
 .close_book_button {
     padding: 1px;
+}
+.close_book_button:hover {
+    transform: scale(1.5);
 }
 
 form {
@@ -207,7 +225,7 @@ input[type="radio"]+label {
     margin: 10px;
     background-color: var(--card-bg);
     border-radius: 10px;
-    box-shadow: 5px 5px 10px var(--header);
+    box-shadow: 5px 5px 10px var(--card-shadow);
 
 }
 
@@ -242,7 +260,7 @@ input[type="radio"]+label {
     background-color: var(--secondary-hover);
 }
 .state_buttons:active {
-    background-color: var(--header);
+    background-color: var(--card-shadow);
 }
 
 .highlight_state {
@@ -268,4 +286,12 @@ img {
     width: 100px;
     height: auto;
     filter: opacity(50%);
+}
+.new_book_card:hover {
+    filter: invert(40%);
+}
+
+/* Grid styling */
+.card {
+    padding-bottom: 0;
 }
