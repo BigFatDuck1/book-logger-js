@@ -203,7 +203,6 @@ input[type="radio"]+label {
 }
 
 .card {
-    padding: 20px;
     margin: 10px;
     background-color: var(--card-bg);
     border-radius: 10px;
@@ -237,7 +236,7 @@ input[type="radio"]+label {
 
 .state_buttons {
     background-color: transparent;
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
 }
 .state_buttons:hover {
     background-color: var(--secondary-hover);
@@ -271,51 +270,57 @@ img {
     filter: opacity(50%);
 }
 
+/* Delete button */
+.icon {
+    background-color: transparent;
+}
+.delete_button:hover {
+    background-color: red;
+}
+
 /* Grid properties of card: rearranging the buttons */
 .card {
     display: grid;
-    grid-template-columns: 1fr 4fr;
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas: 
+        "sidebar-1 one ."
+        "sidebar-2 two ."
+        "sidebar-3 three ."
+        "sidebar-4 four ."
+        ". five trash";
 }
 
 .title_div {
-    grid-column-start: 2;
-    grid-column-end: -1;
-    grid-row-start: 1;
-    grid-row-end: 2;
+    grid-area: one;
 }
 
 .author_div {
-    grid-column-start: 2;
-    grid-column-end: -1;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-area: two;
 }
 
 .pages_div {
-    grid-column-start: 2;
-    grid-column-end: -1;
-    grid-row-start: 3;
-    grid-row-end: 4;
+    grid-area: three;
 }
 
 .state_div {
-    grid-column-start: 2;
-    grid-column-end: -1;
-    grid-row-start: 4;
-    grid-row-end: 5;
+    grid-area: four;
 }
 
 .bookmark_div {
-    grid-column-start: 2;
-    grid-column-end: -1;
-    grid-row-start: 5;
-    grid-row-end: 6;
+    grid-area: five;
 }
 
-.buttons_div {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: -1;
+button[data-state="Unread"] {
+    grid-area: sidebar-1;
+}
+button[data-state="Reading"] {
+    grid-area: sidebar-2;
+}
+button[data-state="Finished"] {
+    grid-area: sidebar-3;
+}
+button[data-state="Wishlist"] {
+    grid-area: sidebar-4;
+}
+.delete_button {
+    grid-area: trash;
 }
