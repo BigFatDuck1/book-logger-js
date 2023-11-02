@@ -148,6 +148,7 @@ label[for="author"],
 label[for="pages"] {
     display: block;
     font-weight: 500;
+    cursor: pointer;
 }
 
 #title, 
