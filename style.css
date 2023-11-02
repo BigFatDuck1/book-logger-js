@@ -108,6 +108,10 @@ dialog {
     box-shadow: 5px 5px 10px var(--secondary);
 }
 
+.form_error {
+    box-shadow: 5px 5px 10px red;
+}
+
 dialog::backdrop {
     background-color: #8080804a;
 }

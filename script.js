@@ -200,6 +200,8 @@ dialog.addEventListener("click", (event) => {
 //4. Form input
 let onSubmitForm = () => {
   
+  document.querySelector("dialog").classList.remove("form_error");
+
   //1. Collect data
   let submit_title = document.querySelector("#title").value;
   let submit_author = document.querySelector("#author").value;
@@ -209,21 +211,25 @@ let onSubmitForm = () => {
   if (submit_title == "" || submit_author == "" || submit_pages == "") {
     /* //TODO: give signal to user that he hasn't finished filling in the form 
     e.g. turn input boxes red */
+    document.querySelector("dialog").classList.add("form_error");
     return "Incomplete form";
   }
   if (document.querySelector("#reading").checked == true && document.querySelector("#bookmark").value == "") {
     //TODO: give signal that user hasn't filled in what page they are at (bookmark)
+    document.querySelector("dialog").classList.add("form_error");
     return "Incomplete bookmark";
   }
   let bookmark_value = document.querySelector("#bookmark").value;
   if (document.querySelector("#reading").checked == true && Number.isNaN(parseInt(bookmark_value)) == true) {
     //TODO: tell user they have entered an invalid bookmark page number ("reading state")
+    document.querySelector("dialog").classList.add("form_error");
     console.log("blocked")
     return "Invalid page number (NaN) in bookmark";
   }
   if (Number.isNaN(parseInt(submit_pages)) == true) {
     //User didn't input a number for pages
     //TODO: tell user they entered an invalid page number
+    document.querySelector("dialog").classList.add("form_error");
     return "Invalid page number (NaN)";
   }
 
@@ -258,6 +264,7 @@ let onSubmitForm = () => {
   document.querySelector("#title").value = "";
   document.querySelector("#author").value = "";
   document.querySelector("#pages").value = "";
+  document.querySelector("#bookmark").value = "";
 
   //6. Close modal
   document.querySelector("dialog").close();
