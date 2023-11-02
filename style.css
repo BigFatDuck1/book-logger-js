@@ -106,6 +106,7 @@ dialog {
     border: none;
     border-radius: 20px;
     box-shadow: 5px 5px 10px var(--secondary);
+    transition: box-shadow 0.3s ease;
 }
 
 .form_error {
