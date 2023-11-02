@@ -178,6 +178,11 @@ document.addEventListener("keydown", (event) => {
   }
 
 })
+//New book card
+document.querySelector(".new_book_card").addEventListener("click", () => {
+  removeErrorShadow();
+  document.querySelector("dialog").showModal();
+})
 
 let close_modal = document.querySelector(".close_book_button");
 
@@ -371,7 +376,3 @@ document.querySelector(".state_input").addEventListener("click", function() {
   })
 })
 
-//8. New book card
-document.querySelector(".new_book_card").addEventListener("click", () => {
-  document.querySelector("dialog").showModal();
-})

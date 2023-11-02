@@ -207,6 +207,7 @@ input[type="radio"]+label {
 }
 .bookmark > label {
     font-style: italic;
+    background-color: transparent;
 }
 .bookmark input {
     width: 8ch;
