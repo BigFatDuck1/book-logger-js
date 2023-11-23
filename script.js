@@ -12,12 +12,21 @@ for (let i = 1; i < 10; i++) {
 }
 
 //Constructor function
-function Book(title, author, pages, read) {
-  this.title = title,
-  this.author = author,
-  this.pages = pages,
-  //Unread, Reading, Completed, Wishlist
-  this.read = read
+// function Book(title, author, pages, read) {
+//   this.title = title,
+//   this.author = author,
+//   this.pages = pages,
+//   this.read = read
+// }
+
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title,
+    this.author = author,
+    this.pages = pages,
+    //Unread, Reading, Completed, Wishlist
+    this.read = read
+  }
 }
 
 //Appends book information to array
